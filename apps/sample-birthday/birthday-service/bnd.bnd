@@ -3,11 +3,6 @@ Bundle-SymbolicName: com.liferay.sample.birthday
 Bundle-Version: 1.0.0
 Export-Package:\
 	com.liferay.sample.birthday.*
-Import-Package:\
-	com.liferay.sample.birthday.model,\
-	com.liferay.sample.birthday.service,\
-	com.liferay.util.service,\
-	*;resolution:="optional"
 Include-Resource:\
 	@lib/com.liferay.sample.birthday-service.jar
 Service-Component: *

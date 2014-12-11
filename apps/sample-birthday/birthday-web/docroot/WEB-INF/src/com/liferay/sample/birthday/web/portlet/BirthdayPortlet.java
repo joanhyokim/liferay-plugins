@@ -21,6 +21,7 @@ import com.liferay.portal.kernel.util.CalendarFactoryUtil;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.WebKeys;
 import com.liferay.portal.theme.ThemeDisplay;
+import com.liferay.portal.util.PortalUtil;
 import com.liferay.sample.birthday.model.Birthday;
 import com.liferay.sample.birthday.service.BirthdayLocalService;
 
@@ -35,6 +36,9 @@ import javax.portlet.PortletException;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 import javax.portlet.UnavailableException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
@@ -77,14 +81,22 @@ public class BirthdayPortlet extends MVCPortlet {
 			RenderRequest renderRequest, RenderResponse renderResponse)
 		throws IOException, PortletException {
 
+		HttpServletRequest request = PortalUtil.getHttpServletRequest(
+			renderRequest);
+
+		HttpServletResponse response = PortalUtil.getHttpServletResponse(
+			renderResponse);
+
 		List<Birthday> birthdays = _birthdayLocalService.getBirthdaies(
 			QueryUtil.ALL_POS, QueryUtil.ALL_POS);
 
+		request.setAttribute("birthdays", birthdays);
 		renderRequest.setAttribute("birthdays", birthdays);
 
 		int birthdaysCount = _birthdayLocalService.getBirthdaiesCount();
 
-		renderRequest.setAttribute("birthdaysCount", birthdaysCount);
+		request.setAttribute("count", birthdaysCount);
+		renderRequest.setAttribute("count", birthdaysCount);
 
 		include("/view.jsp", renderRequest, renderResponse);
 	}

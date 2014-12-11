@@ -2,6 +2,7 @@ Bundle-Name: Sample Birthday Service
 Bundle-SymbolicName: com.liferay.sample.birthday
 Bundle-Version: 1.0.0
 Export-Package:\
-	com.liferay.sample.birthday.*
+	com.liferay.sample.birthday.*,\
+	com.liferay.util.service
 Include-Resource:\
 	@lib/com.liferay.sample.birthday-service.jar

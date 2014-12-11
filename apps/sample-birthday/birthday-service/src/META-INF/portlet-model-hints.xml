@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.liferay.sample.birthday.model.Birthday">
+		<field name="birthdayId" type="long" />
+		<field name="name" type="String" />
+		<field name="date" type="Date" />
+	</model>
+</model-hints>

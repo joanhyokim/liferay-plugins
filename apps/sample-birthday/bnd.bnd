@@ -1,0 +1,7 @@
+Bundle-Name: Login API
+Bundle-SymbolicName: com.liferay.login.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.liferay.login.api.model,\
+	com.liferay.login.api.util
+Service-Component: com.liferay.login.api.*

@@ -1,0 +1,3 @@
+Bundle-Name: Test OSGi Liferay Login Hook
+Bundle-SymbolicName: com.liferay.test.login.hook
+Bundle-Version: 1.0.0

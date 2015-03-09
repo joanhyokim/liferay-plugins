@@ -12,27 +12,30 @@
  * details.
  */
 
-package com.liferay.marketplace;
+package com.liferay.marketplace.exception;
+
+import aQute.bnd.annotation.ProviderType;
 
 import com.liferay.portal.kernel.exception.PortalException;
 
 /**
  * @author Ryan Park
  */
-public class AppPropertiesException extends PortalException {
+@ProviderType
+public class AppVersionException extends PortalException {
 
-	public AppPropertiesException() {
+	public AppVersionException() {
 	}
 
-	public AppPropertiesException(String msg) {
+	public AppVersionException(String msg) {
 		super(msg);
 	}
 
-	public AppPropertiesException(String msg, Throwable cause) {
+	public AppVersionException(String msg, Throwable cause) {
 		super(msg, cause);
 	}
 
-	public AppPropertiesException(Throwable cause) {
+	public AppVersionException(Throwable cause) {
 		super(cause);
 	}
 

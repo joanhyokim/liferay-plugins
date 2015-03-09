@@ -18,16 +18,19 @@ import aQute.bnd.annotation.ProviderType;
 
 import com.liferay.marketplace.model.Module;
 
-import com.liferay.portal.kernel.bean.PortletBeanLocatorUtil;
 import com.liferay.portal.kernel.dao.orm.DynamicQuery;
 import com.liferay.portal.kernel.util.OrderByComparator;
-import com.liferay.portal.kernel.util.ReferenceRegistry;
 import com.liferay.portal.service.ServiceContext;
+
+import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
+
+import org.osgi.util.tracker.ServiceTracker;
 
 import java.util.List;
 
 /**
- * The persistence utility for the module service. This utility wraps {@link ModulePersistenceImpl} and provides direct access to the database for CRUD operations. This utility should only be used by the service layer, as it must operate within a transaction. Never access this utility in a JSP, controller, model, or other front-end class.
+ * The persistence utility for the module service. This utility wraps {@link com.liferay.marketplace.service.persistence.impl.ModulePersistenceImpl} and provides direct access to the database for CRUD operations. This utility should only be used by the service layer, as it must operate within a transaction. Never access this utility in a JSP, controller, model, or other front-end class.
  *
  * <p>
  * Caching information and settings can be found in <code>portal.properties</code>
@@ -35,7 +38,7 @@ import java.util.List;
  *
  * @author Ryan Park
  * @see ModulePersistence
- * @see ModulePersistenceImpl
+ * @see com.liferay.marketplace.service.persistence.impl.ModulePersistenceImpl
  * @generated
  */
 @ProviderType
@@ -164,7 +167,7 @@ public class ModuleUtil {
 	public static com.liferay.marketplace.model.Module findByUuid_First(
 		java.lang.String uuid,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.Module> orderByComparator)
-		throws com.liferay.marketplace.NoSuchModuleException {
+		throws com.liferay.marketplace.exception.NoSuchModuleException {
 		return getPersistence().findByUuid_First(uuid, orderByComparator);
 	}
 
@@ -192,7 +195,7 @@ public class ModuleUtil {
 	public static com.liferay.marketplace.model.Module findByUuid_Last(
 		java.lang.String uuid,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.Module> orderByComparator)
-		throws com.liferay.marketplace.NoSuchModuleException {
+		throws com.liferay.marketplace.exception.NoSuchModuleException {
 		return getPersistence().findByUuid_Last(uuid, orderByComparator);
 	}
 
@@ -221,7 +224,7 @@ public class ModuleUtil {
 	public static com.liferay.marketplace.model.Module[] findByUuid_PrevAndNext(
 		long moduleId, java.lang.String uuid,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.Module> orderByComparator)
-		throws com.liferay.marketplace.NoSuchModuleException {
+		throws com.liferay.marketplace.exception.NoSuchModuleException {
 		return getPersistence()
 				   .findByUuid_PrevAndNext(moduleId, uuid, orderByComparator);
 	}
@@ -303,7 +306,7 @@ public class ModuleUtil {
 	public static com.liferay.marketplace.model.Module findByAppId_First(
 		long appId,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.Module> orderByComparator)
-		throws com.liferay.marketplace.NoSuchModuleException {
+		throws com.liferay.marketplace.exception.NoSuchModuleException {
 		return getPersistence().findByAppId_First(appId, orderByComparator);
 	}
 
@@ -331,7 +334,7 @@ public class ModuleUtil {
 	public static com.liferay.marketplace.model.Module findByAppId_Last(
 		long appId,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.Module> orderByComparator)
-		throws com.liferay.marketplace.NoSuchModuleException {
+		throws com.liferay.marketplace.exception.NoSuchModuleException {
 		return getPersistence().findByAppId_Last(appId, orderByComparator);
 	}
 
@@ -360,7 +363,7 @@ public class ModuleUtil {
 	public static com.liferay.marketplace.model.Module[] findByAppId_PrevAndNext(
 		long moduleId, long appId,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.Module> orderByComparator)
-		throws com.liferay.marketplace.NoSuchModuleException {
+		throws com.liferay.marketplace.exception.NoSuchModuleException {
 		return getPersistence()
 				   .findByAppId_PrevAndNext(moduleId, appId, orderByComparator);
 	}
@@ -445,7 +448,7 @@ public class ModuleUtil {
 	public static com.liferay.marketplace.model.Module findByBundleSymbolicName_First(
 		java.lang.String bundleSymbolicName,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.Module> orderByComparator)
-		throws com.liferay.marketplace.NoSuchModuleException {
+		throws com.liferay.marketplace.exception.NoSuchModuleException {
 		return getPersistence()
 				   .findByBundleSymbolicName_First(bundleSymbolicName,
 			orderByComparator);
@@ -477,7 +480,7 @@ public class ModuleUtil {
 	public static com.liferay.marketplace.model.Module findByBundleSymbolicName_Last(
 		java.lang.String bundleSymbolicName,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.Module> orderByComparator)
-		throws com.liferay.marketplace.NoSuchModuleException {
+		throws com.liferay.marketplace.exception.NoSuchModuleException {
 		return getPersistence()
 				   .findByBundleSymbolicName_Last(bundleSymbolicName,
 			orderByComparator);
@@ -510,7 +513,7 @@ public class ModuleUtil {
 	public static com.liferay.marketplace.model.Module[] findByBundleSymbolicName_PrevAndNext(
 		long moduleId, java.lang.String bundleSymbolicName,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.Module> orderByComparator)
-		throws com.liferay.marketplace.NoSuchModuleException {
+		throws com.liferay.marketplace.exception.NoSuchModuleException {
 		return getPersistence()
 				   .findByBundleSymbolicName_PrevAndNext(moduleId,
 			bundleSymbolicName, orderByComparator);
@@ -596,7 +599,7 @@ public class ModuleUtil {
 	public static com.liferay.marketplace.model.Module findByContextName_First(
 		java.lang.String contextName,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.Module> orderByComparator)
-		throws com.liferay.marketplace.NoSuchModuleException {
+		throws com.liferay.marketplace.exception.NoSuchModuleException {
 		return getPersistence()
 				   .findByContextName_First(contextName, orderByComparator);
 	}
@@ -626,7 +629,7 @@ public class ModuleUtil {
 	public static com.liferay.marketplace.model.Module findByContextName_Last(
 		java.lang.String contextName,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.Module> orderByComparator)
-		throws com.liferay.marketplace.NoSuchModuleException {
+		throws com.liferay.marketplace.exception.NoSuchModuleException {
 		return getPersistence()
 				   .findByContextName_Last(contextName, orderByComparator);
 	}
@@ -657,7 +660,7 @@ public class ModuleUtil {
 	public static com.liferay.marketplace.model.Module[] findByContextName_PrevAndNext(
 		long moduleId, java.lang.String contextName,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.Module> orderByComparator)
-		throws com.liferay.marketplace.NoSuchModuleException {
+		throws com.liferay.marketplace.exception.NoSuchModuleException {
 		return getPersistence()
 				   .findByContextName_PrevAndNext(moduleId, contextName,
 			orderByComparator);
@@ -692,7 +695,7 @@ public class ModuleUtil {
 	*/
 	public static com.liferay.marketplace.model.Module findByA_CN(long appId,
 		java.lang.String contextName)
-		throws com.liferay.marketplace.NoSuchModuleException {
+		throws com.liferay.marketplace.exception.NoSuchModuleException {
 		return getPersistence().findByA_CN(appId, contextName);
 	}
 
@@ -731,7 +734,7 @@ public class ModuleUtil {
 	*/
 	public static com.liferay.marketplace.model.Module removeByA_CN(
 		long appId, java.lang.String contextName)
-		throws com.liferay.marketplace.NoSuchModuleException {
+		throws com.liferay.marketplace.exception.NoSuchModuleException {
 		return getPersistence().removeByA_CN(appId, contextName);
 	}
 
@@ -758,7 +761,7 @@ public class ModuleUtil {
 	public static com.liferay.marketplace.model.Module findByA_BSN_BV(
 		long appId, java.lang.String bundleSymbolicName,
 		java.lang.String bundleVersion)
-		throws com.liferay.marketplace.NoSuchModuleException {
+		throws com.liferay.marketplace.exception.NoSuchModuleException {
 		return getPersistence()
 				   .findByA_BSN_BV(appId, bundleSymbolicName, bundleVersion);
 	}
@@ -806,7 +809,7 @@ public class ModuleUtil {
 	public static com.liferay.marketplace.model.Module removeByA_BSN_BV(
 		long appId, java.lang.String bundleSymbolicName,
 		java.lang.String bundleVersion)
-		throws com.liferay.marketplace.NoSuchModuleException {
+		throws com.liferay.marketplace.exception.NoSuchModuleException {
 		return getPersistence()
 				   .removeByA_BSN_BV(appId, bundleSymbolicName, bundleVersion);
 	}
@@ -862,7 +865,7 @@ public class ModuleUtil {
 	* @throws com.liferay.marketplace.NoSuchModuleException if a module with the primary key could not be found
 	*/
 	public static com.liferay.marketplace.model.Module remove(long moduleId)
-		throws com.liferay.marketplace.NoSuchModuleException {
+		throws com.liferay.marketplace.exception.NoSuchModuleException {
 		return getPersistence().remove(moduleId);
 	}
 
@@ -879,7 +882,8 @@ public class ModuleUtil {
 	* @throws com.liferay.marketplace.NoSuchModuleException if a module with the primary key could not be found
 	*/
 	public static com.liferay.marketplace.model.Module findByPrimaryKey(
-		long moduleId) throws com.liferay.marketplace.NoSuchModuleException {
+		long moduleId)
+		throws com.liferay.marketplace.exception.NoSuchModuleException {
 		return getPersistence().findByPrimaryKey(moduleId);
 	}
 
@@ -959,14 +963,7 @@ public class ModuleUtil {
 	}
 
 	public static ModulePersistence getPersistence() {
-		if (_persistence == null) {
-			_persistence = (ModulePersistence)PortletBeanLocatorUtil.locate(com.liferay.marketplace.service.ClpSerializer.getServletContextName(),
-					ModulePersistence.class.getName());
-
-			ReferenceRegistry.registerReference(ModuleUtil.class, "_persistence");
-		}
-
-		return _persistence;
+		return _serviceTracker.getService();
 	}
 
 	/**
@@ -976,5 +973,14 @@ public class ModuleUtil {
 	public void setPersistence(ModulePersistence persistence) {
 	}
 
-	private static ModulePersistence _persistence;
+	private static ServiceTracker<ModulePersistence, ModulePersistence> _serviceTracker;
+
+	static {
+		Bundle bundle = FrameworkUtil.getBundle(ModuleUtil.class);
+
+		_serviceTracker = new ServiceTracker<ModulePersistence, ModulePersistence>(bundle.getBundleContext(),
+				ModulePersistence.class, null);
+
+		_serviceTracker.open();
+	}
 }

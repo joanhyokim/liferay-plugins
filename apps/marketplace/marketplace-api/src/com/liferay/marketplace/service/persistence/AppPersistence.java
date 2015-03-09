@@ -28,7 +28,7 @@ import com.liferay.portal.service.persistence.BasePersistence;
  * </p>
  *
  * @author Ryan Park
- * @see AppPersistenceImpl
+ * @see com.liferay.marketplace.service.persistence.impl.AppPersistenceImpl
  * @see AppUtil
  * @generated
  */
@@ -92,7 +92,7 @@ public interface AppPersistence extends BasePersistence<App> {
 	public com.liferay.marketplace.model.App findByUuid_First(
 		java.lang.String uuid,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.App> orderByComparator)
-		throws com.liferay.marketplace.NoSuchAppException;
+		throws com.liferay.marketplace.exception.NoSuchAppException;
 
 	/**
 	* Returns the first app in the ordered set where uuid = &#63;.
@@ -116,7 +116,7 @@ public interface AppPersistence extends BasePersistence<App> {
 	public com.liferay.marketplace.model.App findByUuid_Last(
 		java.lang.String uuid,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.App> orderByComparator)
-		throws com.liferay.marketplace.NoSuchAppException;
+		throws com.liferay.marketplace.exception.NoSuchAppException;
 
 	/**
 	* Returns the last app in the ordered set where uuid = &#63;.
@@ -141,7 +141,7 @@ public interface AppPersistence extends BasePersistence<App> {
 	public com.liferay.marketplace.model.App[] findByUuid_PrevAndNext(
 		long appId, java.lang.String uuid,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.App> orderByComparator)
-		throws com.liferay.marketplace.NoSuchAppException;
+		throws com.liferay.marketplace.exception.NoSuchAppException;
 
 	/**
 	* Removes all the apps where uuid = &#63; from the database.
@@ -214,7 +214,7 @@ public interface AppPersistence extends BasePersistence<App> {
 	public com.liferay.marketplace.model.App findByUuid_C_First(
 		java.lang.String uuid, long companyId,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.App> orderByComparator)
-		throws com.liferay.marketplace.NoSuchAppException;
+		throws com.liferay.marketplace.exception.NoSuchAppException;
 
 	/**
 	* Returns the first app in the ordered set where uuid = &#63; and companyId = &#63;.
@@ -240,7 +240,7 @@ public interface AppPersistence extends BasePersistence<App> {
 	public com.liferay.marketplace.model.App findByUuid_C_Last(
 		java.lang.String uuid, long companyId,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.App> orderByComparator)
-		throws com.liferay.marketplace.NoSuchAppException;
+		throws com.liferay.marketplace.exception.NoSuchAppException;
 
 	/**
 	* Returns the last app in the ordered set where uuid = &#63; and companyId = &#63;.
@@ -267,7 +267,7 @@ public interface AppPersistence extends BasePersistence<App> {
 	public com.liferay.marketplace.model.App[] findByUuid_C_PrevAndNext(
 		long appId, java.lang.String uuid, long companyId,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.App> orderByComparator)
-		throws com.liferay.marketplace.NoSuchAppException;
+		throws com.liferay.marketplace.exception.NoSuchAppException;
 
 	/**
 	* Removes all the apps where uuid = &#63; and companyId = &#63; from the database.
@@ -338,7 +338,7 @@ public interface AppPersistence extends BasePersistence<App> {
 	public com.liferay.marketplace.model.App findByCompanyId_First(
 		long companyId,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.App> orderByComparator)
-		throws com.liferay.marketplace.NoSuchAppException;
+		throws com.liferay.marketplace.exception.NoSuchAppException;
 
 	/**
 	* Returns the first app in the ordered set where companyId = &#63;.
@@ -362,7 +362,7 @@ public interface AppPersistence extends BasePersistence<App> {
 	public com.liferay.marketplace.model.App findByCompanyId_Last(
 		long companyId,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.App> orderByComparator)
-		throws com.liferay.marketplace.NoSuchAppException;
+		throws com.liferay.marketplace.exception.NoSuchAppException;
 
 	/**
 	* Returns the last app in the ordered set where companyId = &#63;.
@@ -387,7 +387,7 @@ public interface AppPersistence extends BasePersistence<App> {
 	public com.liferay.marketplace.model.App[] findByCompanyId_PrevAndNext(
 		long appId, long companyId,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.App> orderByComparator)
-		throws com.liferay.marketplace.NoSuchAppException;
+		throws com.liferay.marketplace.exception.NoSuchAppException;
 
 	/**
 	* Removes all the apps where companyId = &#63; from the database.
@@ -412,7 +412,7 @@ public interface AppPersistence extends BasePersistence<App> {
 	* @throws com.liferay.marketplace.NoSuchAppException if a matching app could not be found
 	*/
 	public com.liferay.marketplace.model.App findByRemoteAppId(long remoteAppId)
-		throws com.liferay.marketplace.NoSuchAppException;
+		throws com.liferay.marketplace.exception.NoSuchAppException;
 
 	/**
 	* Returns the app where remoteAppId = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
@@ -440,7 +440,8 @@ public interface AppPersistence extends BasePersistence<App> {
 	* @return the app that was removed
 	*/
 	public com.liferay.marketplace.model.App removeByRemoteAppId(
-		long remoteAppId) throws com.liferay.marketplace.NoSuchAppException;
+		long remoteAppId)
+		throws com.liferay.marketplace.exception.NoSuchAppException;
 
 	/**
 	* Returns the number of apps where remoteAppId = &#63;.
@@ -502,7 +503,7 @@ public interface AppPersistence extends BasePersistence<App> {
 	public com.liferay.marketplace.model.App findByCategory_First(
 		java.lang.String category,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.App> orderByComparator)
-		throws com.liferay.marketplace.NoSuchAppException;
+		throws com.liferay.marketplace.exception.NoSuchAppException;
 
 	/**
 	* Returns the first app in the ordered set where category = &#63;.
@@ -526,7 +527,7 @@ public interface AppPersistence extends BasePersistence<App> {
 	public com.liferay.marketplace.model.App findByCategory_Last(
 		java.lang.String category,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.App> orderByComparator)
-		throws com.liferay.marketplace.NoSuchAppException;
+		throws com.liferay.marketplace.exception.NoSuchAppException;
 
 	/**
 	* Returns the last app in the ordered set where category = &#63;.
@@ -551,7 +552,7 @@ public interface AppPersistence extends BasePersistence<App> {
 	public com.liferay.marketplace.model.App[] findByCategory_PrevAndNext(
 		long appId, java.lang.String category,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.App> orderByComparator)
-		throws com.liferay.marketplace.NoSuchAppException;
+		throws com.liferay.marketplace.exception.NoSuchAppException;
 
 	/**
 	* Removes all the apps where category = &#63; from the database.
@@ -599,7 +600,7 @@ public interface AppPersistence extends BasePersistence<App> {
 	* @throws com.liferay.marketplace.NoSuchAppException if a app with the primary key could not be found
 	*/
 	public com.liferay.marketplace.model.App remove(long appId)
-		throws com.liferay.marketplace.NoSuchAppException;
+		throws com.liferay.marketplace.exception.NoSuchAppException;
 
 	public com.liferay.marketplace.model.App updateImpl(
 		com.liferay.marketplace.model.App app);
@@ -612,7 +613,7 @@ public interface AppPersistence extends BasePersistence<App> {
 	* @throws com.liferay.marketplace.NoSuchAppException if a app with the primary key could not be found
 	*/
 	public com.liferay.marketplace.model.App findByPrimaryKey(long appId)
-		throws com.liferay.marketplace.NoSuchAppException;
+		throws com.liferay.marketplace.exception.NoSuchAppException;
 
 	/**
 	* Returns the app with the primary key or returns <code>null</code> if it could not be found.

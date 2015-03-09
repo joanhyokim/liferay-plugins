@@ -16,9 +16,10 @@ package com.liferay.marketplace.service;
 
 import aQute.bnd.annotation.ProviderType;
 
-import com.liferay.portal.kernel.bean.PortletBeanLocatorUtil;
-import com.liferay.portal.kernel.util.ReferenceRegistry;
-import com.liferay.portal.service.InvokableLocalService;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
+
+import org.osgi.util.tracker.ServiceTracker;
 
 /**
  * Provides the local service utility for Module. This utility wraps
@@ -258,12 +259,6 @@ public class ModuleLocalServiceUtil {
 		return getService().getPersistedModel(primaryKeyObj);
 	}
 
-	public static java.lang.Object invokeMethod(java.lang.String name,
-		java.lang.String[] parameterTypes, java.lang.Object[] arguments)
-		throws java.lang.Throwable {
-		return getService().invokeMethod(name, parameterTypes, arguments);
-	}
-
 	/**
 	* Sets the Spring bean ID for this bean.
 	*
@@ -284,27 +279,8 @@ public class ModuleLocalServiceUtil {
 		return getService().updateModule(module);
 	}
 
-	public static void clearService() {
-		_service = null;
-	}
-
 	public static ModuleLocalService getService() {
-		if (_service == null) {
-			InvokableLocalService invokableLocalService = (InvokableLocalService)PortletBeanLocatorUtil.locate(ClpSerializer.getServletContextName(),
-					ModuleLocalService.class.getName());
-
-			if (invokableLocalService instanceof ModuleLocalService) {
-				_service = (ModuleLocalService)invokableLocalService;
-			}
-			else {
-				_service = new ModuleLocalServiceClp(invokableLocalService);
-			}
-
-			ReferenceRegistry.registerReference(ModuleLocalServiceUtil.class,
-				"_service");
-		}
-
-		return _service;
+		return _serviceTracker.getService();
 	}
 
 	/**
@@ -314,5 +290,14 @@ public class ModuleLocalServiceUtil {
 	public void setService(ModuleLocalService service) {
 	}
 
-	private static ModuleLocalService _service;
+	private static ServiceTracker<ModuleLocalService, ModuleLocalService> _serviceTracker;
+
+	static {
+		Bundle bundle = FrameworkUtil.getBundle(ModuleLocalServiceUtil.class);
+
+		_serviceTracker = new ServiceTracker<ModuleLocalService, ModuleLocalService>(bundle.getBundleContext(),
+				ModuleLocalService.class, null);
+
+		_serviceTracker.open();
+	}
 }

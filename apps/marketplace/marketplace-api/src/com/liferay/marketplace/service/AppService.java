@@ -23,7 +23,6 @@ import com.liferay.portal.kernel.transaction.Isolation;
 import com.liferay.portal.kernel.transaction.Transactional;
 import com.liferay.portal.security.ac.AccessControlled;
 import com.liferay.portal.service.BaseService;
-import com.liferay.portal.service.InvokableService;
 
 /**
  * Provides the remote service interface for App. Methods of this
@@ -41,7 +40,7 @@ import com.liferay.portal.service.InvokableService;
 @ProviderType
 @Transactional(isolation = Isolation.PORTAL, rollbackFor =  {
 	PortalException.class, SystemException.class})
-public interface AppService extends BaseService, InvokableService {
+public interface AppService extends BaseService {
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
@@ -59,11 +58,6 @@ public interface AppService extends BaseService, InvokableService {
 
 	public void installApp(long remoteAppId)
 		throws com.liferay.portal.kernel.exception.PortalException;
-
-	@Override
-	public java.lang.Object invokeMethod(java.lang.String name,
-		java.lang.String[] parameterTypes, java.lang.Object[] arguments)
-		throws java.lang.Throwable;
 
 	/**
 	* Sets the Spring bean ID for this bean.

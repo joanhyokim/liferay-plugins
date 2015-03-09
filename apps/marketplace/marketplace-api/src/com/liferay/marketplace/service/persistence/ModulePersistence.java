@@ -28,7 +28,7 @@ import com.liferay.portal.service.persistence.BasePersistence;
  * </p>
  *
  * @author Ryan Park
- * @see ModulePersistenceImpl
+ * @see com.liferay.marketplace.service.persistence.impl.ModulePersistenceImpl
  * @see ModuleUtil
  * @generated
  */
@@ -92,7 +92,7 @@ public interface ModulePersistence extends BasePersistence<Module> {
 	public com.liferay.marketplace.model.Module findByUuid_First(
 		java.lang.String uuid,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.Module> orderByComparator)
-		throws com.liferay.marketplace.NoSuchModuleException;
+		throws com.liferay.marketplace.exception.NoSuchModuleException;
 
 	/**
 	* Returns the first module in the ordered set where uuid = &#63;.
@@ -116,7 +116,7 @@ public interface ModulePersistence extends BasePersistence<Module> {
 	public com.liferay.marketplace.model.Module findByUuid_Last(
 		java.lang.String uuid,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.Module> orderByComparator)
-		throws com.liferay.marketplace.NoSuchModuleException;
+		throws com.liferay.marketplace.exception.NoSuchModuleException;
 
 	/**
 	* Returns the last module in the ordered set where uuid = &#63;.
@@ -141,7 +141,7 @@ public interface ModulePersistence extends BasePersistence<Module> {
 	public com.liferay.marketplace.model.Module[] findByUuid_PrevAndNext(
 		long moduleId, java.lang.String uuid,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.Module> orderByComparator)
-		throws com.liferay.marketplace.NoSuchModuleException;
+		throws com.liferay.marketplace.exception.NoSuchModuleException;
 
 	/**
 	* Removes all the modules where uuid = &#63; from the database.
@@ -209,7 +209,7 @@ public interface ModulePersistence extends BasePersistence<Module> {
 	*/
 	public com.liferay.marketplace.model.Module findByAppId_First(long appId,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.Module> orderByComparator)
-		throws com.liferay.marketplace.NoSuchModuleException;
+		throws com.liferay.marketplace.exception.NoSuchModuleException;
 
 	/**
 	* Returns the first module in the ordered set where appId = &#63;.
@@ -231,7 +231,7 @@ public interface ModulePersistence extends BasePersistence<Module> {
 	*/
 	public com.liferay.marketplace.model.Module findByAppId_Last(long appId,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.Module> orderByComparator)
-		throws com.liferay.marketplace.NoSuchModuleException;
+		throws com.liferay.marketplace.exception.NoSuchModuleException;
 
 	/**
 	* Returns the last module in the ordered set where appId = &#63;.
@@ -255,7 +255,7 @@ public interface ModulePersistence extends BasePersistence<Module> {
 	public com.liferay.marketplace.model.Module[] findByAppId_PrevAndNext(
 		long moduleId, long appId,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.Module> orderByComparator)
-		throws com.liferay.marketplace.NoSuchModuleException;
+		throws com.liferay.marketplace.exception.NoSuchModuleException;
 
 	/**
 	* Removes all the modules where appId = &#63; from the database.
@@ -324,7 +324,7 @@ public interface ModulePersistence extends BasePersistence<Module> {
 	public com.liferay.marketplace.model.Module findByBundleSymbolicName_First(
 		java.lang.String bundleSymbolicName,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.Module> orderByComparator)
-		throws com.liferay.marketplace.NoSuchModuleException;
+		throws com.liferay.marketplace.exception.NoSuchModuleException;
 
 	/**
 	* Returns the first module in the ordered set where bundleSymbolicName = &#63;.
@@ -348,7 +348,7 @@ public interface ModulePersistence extends BasePersistence<Module> {
 	public com.liferay.marketplace.model.Module findByBundleSymbolicName_Last(
 		java.lang.String bundleSymbolicName,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.Module> orderByComparator)
-		throws com.liferay.marketplace.NoSuchModuleException;
+		throws com.liferay.marketplace.exception.NoSuchModuleException;
 
 	/**
 	* Returns the last module in the ordered set where bundleSymbolicName = &#63;.
@@ -373,7 +373,7 @@ public interface ModulePersistence extends BasePersistence<Module> {
 	public com.liferay.marketplace.model.Module[] findByBundleSymbolicName_PrevAndNext(
 		long moduleId, java.lang.String bundleSymbolicName,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.Module> orderByComparator)
-		throws com.liferay.marketplace.NoSuchModuleException;
+		throws com.liferay.marketplace.exception.NoSuchModuleException;
 
 	/**
 	* Removes all the modules where bundleSymbolicName = &#63; from the database.
@@ -442,7 +442,7 @@ public interface ModulePersistence extends BasePersistence<Module> {
 	public com.liferay.marketplace.model.Module findByContextName_First(
 		java.lang.String contextName,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.Module> orderByComparator)
-		throws com.liferay.marketplace.NoSuchModuleException;
+		throws com.liferay.marketplace.exception.NoSuchModuleException;
 
 	/**
 	* Returns the first module in the ordered set where contextName = &#63;.
@@ -466,7 +466,7 @@ public interface ModulePersistence extends BasePersistence<Module> {
 	public com.liferay.marketplace.model.Module findByContextName_Last(
 		java.lang.String contextName,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.Module> orderByComparator)
-		throws com.liferay.marketplace.NoSuchModuleException;
+		throws com.liferay.marketplace.exception.NoSuchModuleException;
 
 	/**
 	* Returns the last module in the ordered set where contextName = &#63;.
@@ -491,7 +491,7 @@ public interface ModulePersistence extends BasePersistence<Module> {
 	public com.liferay.marketplace.model.Module[] findByContextName_PrevAndNext(
 		long moduleId, java.lang.String contextName,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.marketplace.model.Module> orderByComparator)
-		throws com.liferay.marketplace.NoSuchModuleException;
+		throws com.liferay.marketplace.exception.NoSuchModuleException;
 
 	/**
 	* Removes all the modules where contextName = &#63; from the database.
@@ -518,7 +518,7 @@ public interface ModulePersistence extends BasePersistence<Module> {
 	*/
 	public com.liferay.marketplace.model.Module findByA_CN(long appId,
 		java.lang.String contextName)
-		throws com.liferay.marketplace.NoSuchModuleException;
+		throws com.liferay.marketplace.exception.NoSuchModuleException;
 
 	/**
 	* Returns the module where appId = &#63; and contextName = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
@@ -550,7 +550,7 @@ public interface ModulePersistence extends BasePersistence<Module> {
 	*/
 	public com.liferay.marketplace.model.Module removeByA_CN(long appId,
 		java.lang.String contextName)
-		throws com.liferay.marketplace.NoSuchModuleException;
+		throws com.liferay.marketplace.exception.NoSuchModuleException;
 
 	/**
 	* Returns the number of modules where appId = &#63; and contextName = &#63;.
@@ -572,7 +572,7 @@ public interface ModulePersistence extends BasePersistence<Module> {
 	*/
 	public com.liferay.marketplace.model.Module findByA_BSN_BV(long appId,
 		java.lang.String bundleSymbolicName, java.lang.String bundleVersion)
-		throws com.liferay.marketplace.NoSuchModuleException;
+		throws com.liferay.marketplace.exception.NoSuchModuleException;
 
 	/**
 	* Returns the module where appId = &#63; and bundleSymbolicName = &#63; and bundleVersion = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
@@ -608,7 +608,7 @@ public interface ModulePersistence extends BasePersistence<Module> {
 	*/
 	public com.liferay.marketplace.model.Module removeByA_BSN_BV(long appId,
 		java.lang.String bundleSymbolicName, java.lang.String bundleVersion)
-		throws com.liferay.marketplace.NoSuchModuleException;
+		throws com.liferay.marketplace.exception.NoSuchModuleException;
 
 	/**
 	* Returns the number of modules where appId = &#63; and bundleSymbolicName = &#63; and bundleVersion = &#63;.
@@ -652,7 +652,7 @@ public interface ModulePersistence extends BasePersistence<Module> {
 	* @throws com.liferay.marketplace.NoSuchModuleException if a module with the primary key could not be found
 	*/
 	public com.liferay.marketplace.model.Module remove(long moduleId)
-		throws com.liferay.marketplace.NoSuchModuleException;
+		throws com.liferay.marketplace.exception.NoSuchModuleException;
 
 	public com.liferay.marketplace.model.Module updateImpl(
 		com.liferay.marketplace.model.Module module);
@@ -665,7 +665,7 @@ public interface ModulePersistence extends BasePersistence<Module> {
 	* @throws com.liferay.marketplace.NoSuchModuleException if a module with the primary key could not be found
 	*/
 	public com.liferay.marketplace.model.Module findByPrimaryKey(long moduleId)
-		throws com.liferay.marketplace.NoSuchModuleException;
+		throws com.liferay.marketplace.exception.NoSuchModuleException;
 
 	/**
 	* Returns the module with the primary key or returns <code>null</code> if it could not be found.

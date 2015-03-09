@@ -16,9 +16,10 @@ package com.liferay.marketplace.service;
 
 import aQute.bnd.annotation.ProviderType;
 
-import com.liferay.portal.kernel.bean.PortletBeanLocatorUtil;
-import com.liferay.portal.kernel.util.ReferenceRegistry;
-import com.liferay.portal.service.InvokableService;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
+
+import org.osgi.util.tracker.ServiceTracker;
 
 /**
  * Provides the remote service utility for App. This utility wraps
@@ -60,12 +61,6 @@ public class AppServiceUtil {
 		getService().installApp(remoteAppId);
 	}
 
-	public static java.lang.Object invokeMethod(java.lang.String name,
-		java.lang.String[] parameterTypes, java.lang.Object[] arguments)
-		throws java.lang.Throwable {
-		return getService().invokeMethod(name, parameterTypes, arguments);
-	}
-
 	/**
 	* Sets the Spring bean ID for this bean.
 	*
@@ -86,26 +81,8 @@ public class AppServiceUtil {
 		return getService().updateApp(remoteAppId, version, file);
 	}
 
-	public static void clearService() {
-		_service = null;
-	}
-
 	public static AppService getService() {
-		if (_service == null) {
-			InvokableService invokableService = (InvokableService)PortletBeanLocatorUtil.locate(ClpSerializer.getServletContextName(),
-					AppService.class.getName());
-
-			if (invokableService instanceof AppService) {
-				_service = (AppService)invokableService;
-			}
-			else {
-				_service = new AppServiceClp(invokableService);
-			}
-
-			ReferenceRegistry.registerReference(AppServiceUtil.class, "_service");
-		}
-
-		return _service;
+		return _serviceTracker.getService();
 	}
 
 	/**
@@ -115,5 +92,14 @@ public class AppServiceUtil {
 	public void setService(AppService service) {
 	}
 
-	private static AppService _service;
+	private static ServiceTracker<AppService, AppService> _serviceTracker;
+
+	static {
+		Bundle bundle = FrameworkUtil.getBundle(AppServiceUtil.class);
+
+		_serviceTracker = new ServiceTracker<AppService, AppService>(bundle.getBundleContext(),
+				AppService.class, null);
+
+		_serviceTracker.open();
+	}
 }

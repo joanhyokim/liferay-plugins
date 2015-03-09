@@ -12,27 +12,30 @@
  * details.
  */
 
-package com.liferay.marketplace;
+package com.liferay.marketplace.exception;
+
+import aQute.bnd.annotation.ProviderType;
 
 import com.liferay.portal.kernel.exception.PortalException;
 
 /**
  * @author Ryan Park
  */
-public class DuplicateAppException extends PortalException {
+@ProviderType
+public class AppTitleException extends PortalException {
 
-	public DuplicateAppException() {
+	public AppTitleException() {
 	}
 
-	public DuplicateAppException(String msg) {
+	public AppTitleException(String msg) {
 		super(msg);
 	}
 
-	public DuplicateAppException(String msg, Throwable cause) {
+	public AppTitleException(String msg, Throwable cause) {
 		super(msg, cause);
 	}
 
-	public DuplicateAppException(Throwable cause) {
+	public AppTitleException(Throwable cause) {
 		super(cause);
 	}
 

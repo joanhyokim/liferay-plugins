@@ -308,13 +308,6 @@ public class AppLocalServiceWrapper implements AppLocalService,
 	}
 
 	@Override
-	public java.lang.Object invokeMethod(java.lang.String name,
-		java.lang.String[] parameterTypes, java.lang.Object[] arguments)
-		throws java.lang.Throwable {
-		return _appLocalService.invokeMethod(name, parameterTypes, arguments);
-	}
-
-	@Override
 	public void processMarketplaceProperties(java.util.Properties properties)
 		throws com.liferay.portal.kernel.exception.PortalException {
 		_appLocalService.processMarketplaceProperties(properties);

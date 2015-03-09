@@ -12,27 +12,30 @@
  * details.
  */
 
-package com.liferay.marketplace;
+package com.liferay.marketplace.exception;
 
-import com.liferay.portal.NoSuchModelException;
+import aQute.bnd.annotation.ProviderType;
+
+import com.liferay.portal.kernel.exception.PortalException;
 
 /**
  * @author Ryan Park
  */
-public class NoSuchModuleException extends NoSuchModelException {
+@ProviderType
+public class AppPropertiesException extends PortalException {
 
-	public NoSuchModuleException() {
+	public AppPropertiesException() {
 	}
 
-	public NoSuchModuleException(String msg) {
+	public AppPropertiesException(String msg) {
 		super(msg);
 	}
 
-	public NoSuchModuleException(String msg, Throwable cause) {
+	public AppPropertiesException(String msg, Throwable cause) {
 		super(msg, cause);
 	}
 
-	public NoSuchModuleException(Throwable cause) {
+	public AppPropertiesException(Throwable cause) {
 		super(cause);
 	}
 

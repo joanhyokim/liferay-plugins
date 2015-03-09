@@ -23,7 +23,6 @@ import com.liferay.portal.kernel.transaction.Isolation;
 import com.liferay.portal.kernel.transaction.Propagation;
 import com.liferay.portal.kernel.transaction.Transactional;
 import com.liferay.portal.service.BaseLocalService;
-import com.liferay.portal.service.InvokableLocalService;
 import com.liferay.portal.service.PersistedModelLocalService;
 
 /**
@@ -41,7 +40,7 @@ import com.liferay.portal.service.PersistedModelLocalService;
 @ProviderType
 @Transactional(isolation = Isolation.PORTAL, rollbackFor =  {
 	PortalException.class, SystemException.class})
-public interface AppLocalService extends BaseLocalService, InvokableLocalService,
+public interface AppLocalService extends BaseLocalService,
 	PersistedModelLocalService {
 	/*
 	 * NOTE FOR DEVELOPERS:
@@ -259,11 +258,6 @@ public interface AppLocalService extends BaseLocalService, InvokableLocalService
 
 	public void installApp(long remoteAppId)
 		throws com.liferay.portal.kernel.exception.PortalException;
-
-	@Override
-	public java.lang.Object invokeMethod(java.lang.String name,
-		java.lang.String[] parameterTypes, java.lang.Object[] arguments)
-		throws java.lang.Throwable;
 
 	public void processMarketplaceProperties(java.util.Properties properties)
 		throws com.liferay.portal.kernel.exception.PortalException;

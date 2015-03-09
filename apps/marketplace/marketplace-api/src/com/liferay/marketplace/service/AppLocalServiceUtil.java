@@ -16,9 +16,10 @@ package com.liferay.marketplace.service;
 
 import aQute.bnd.annotation.ProviderType;
 
-import com.liferay.portal.kernel.bean.PortletBeanLocatorUtil;
-import com.liferay.portal.kernel.util.ReferenceRegistry;
-import com.liferay.portal.service.InvokableLocalService;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
+
+import org.osgi.util.tracker.ServiceTracker;
 
 /**
  * Provides the local service utility for App. This utility wraps
@@ -291,12 +292,6 @@ public class AppLocalServiceUtil {
 		getService().installApp(remoteAppId);
 	}
 
-	public static java.lang.Object invokeMethod(java.lang.String name,
-		java.lang.String[] parameterTypes, java.lang.Object[] arguments)
-		throws java.lang.Throwable {
-		return getService().invokeMethod(name, parameterTypes, arguments);
-	}
-
 	public static void processMarketplaceProperties(
 		java.util.Properties properties)
 		throws com.liferay.portal.kernel.exception.PortalException {
@@ -344,27 +339,8 @@ public class AppLocalServiceUtil {
 		return getService().updateApp(userId, remoteAppId, version, file);
 	}
 
-	public static void clearService() {
-		_service = null;
-	}
-
 	public static AppLocalService getService() {
-		if (_service == null) {
-			InvokableLocalService invokableLocalService = (InvokableLocalService)PortletBeanLocatorUtil.locate(ClpSerializer.getServletContextName(),
-					AppLocalService.class.getName());
-
-			if (invokableLocalService instanceof AppLocalService) {
-				_service = (AppLocalService)invokableLocalService;
-			}
-			else {
-				_service = new AppLocalServiceClp(invokableLocalService);
-			}
-
-			ReferenceRegistry.registerReference(AppLocalServiceUtil.class,
-				"_service");
-		}
-
-		return _service;
+		return _serviceTracker.getService();
 	}
 
 	/**
@@ -374,5 +350,14 @@ public class AppLocalServiceUtil {
 	public void setService(AppLocalService service) {
 	}
 
-	private static AppLocalService _service;
+	private static ServiceTracker<AppLocalService, AppLocalService> _serviceTracker;
+
+	static {
+		Bundle bundle = FrameworkUtil.getBundle(AppLocalServiceUtil.class);
+
+		_serviceTracker = new ServiceTracker<AppLocalService, AppLocalService>(bundle.getBundleContext(),
+				AppLocalService.class, null);
+
+		_serviceTracker.open();
+	}
 }

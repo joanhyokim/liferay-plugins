@@ -14,7 +14,7 @@
 
 package com.liferay.marketplace.service.impl;
 
-import com.liferay.marketplace.ModuleNamespaceException;
+import com.liferay.marketplace.exception.ModuleNamespaceException;
 import com.liferay.marketplace.model.Module;
 import com.liferay.marketplace.service.base.ModuleLocalServiceBaseImpl;
 import com.liferay.portal.kernel.exception.PortalException;

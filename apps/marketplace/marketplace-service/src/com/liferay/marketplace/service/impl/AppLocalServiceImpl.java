@@ -14,9 +14,9 @@
 
 package com.liferay.marketplace.service.impl;
 
-import com.liferay.marketplace.AppPropertiesException;
-import com.liferay.marketplace.AppTitleException;
-import com.liferay.marketplace.AppVersionException;
+import com.liferay.marketplace.exception.AppPropertiesException;
+import com.liferay.marketplace.exception.AppTitleException;
+import com.liferay.marketplace.exception.AppVersionException;
 import com.liferay.marketplace.model.App;
 import com.liferay.marketplace.model.Module;
 import com.liferay.marketplace.service.base.AppLocalServiceBaseImpl;

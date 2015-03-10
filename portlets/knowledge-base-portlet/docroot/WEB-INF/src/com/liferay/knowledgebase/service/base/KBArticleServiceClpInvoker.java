@@ -48,7 +48,8 @@ public class KBArticleServiceClpInvoker {
 		_methodName107 = "addKBArticlesMarkdown";
 
 		_methodParameterTypes107 = new String[] {
-				"long", "long", "java.lang.String", "java.io.InputStream",
+				"long", "long", "java.lang.String", "boolean",
+				"java.io.InputStream",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
@@ -266,8 +267,9 @@ public class KBArticleServiceClpInvoker {
 			return KBArticleServiceUtil.addKBArticlesMarkdown(((Long)arguments[0]).longValue(),
 				((Long)arguments[1]).longValue(),
 				(java.lang.String)arguments[2],
-				(java.io.InputStream)arguments[3],
-				(com.liferay.portal.service.ServiceContext)arguments[4]);
+				((Boolean)arguments[3]).booleanValue(),
+				(java.io.InputStream)arguments[4],
+				(com.liferay.portal.service.ServiceContext)arguments[5]);
 		}
 
 		if (_methodName108.equals(name) &&

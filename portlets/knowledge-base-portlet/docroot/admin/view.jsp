@@ -35,15 +35,6 @@ KBArticleURLHelper kbArticleURLHelper = new KBArticleURLHelper(renderRequest, re
 	<liferay-portlet:renderURLParams varImpl="searchURL" />
 	<aui:input name="resourcePrimKeys" type="hidden" />
 
-	<liferay-ui:error exception="<%= KBArticleImportException.class %>">
-
-		<%
-		KBArticleImportException kbaie = (KBArticleImportException)errorException;
-		%>
-
-		<%= LanguageUtil.format(locale, "an-unexpected-error-occurred-while-importing-articles-x", kbaie.getLocalizedMessage()) %>
-	</liferay-ui:error>
-
 	<liferay-ui:error exception="<%= KBArticlePriorityException.class %>" message='<%= LanguageUtil.format(request, "please-enter-a-priority-that-is-greater-than-x", "0", false) %>' translateMessage="<%= false %>" />
 
 	<c:if test='<%= SessionMessages.contains(renderRequest, "importedKBArticlesCount") %>'>
@@ -392,6 +383,8 @@ KBArticleURLHelper kbArticleURLHelper = new KBArticleURLHelper(renderRequest, re
 </aui:form>
 
 <aui:script use="aui-base,liferay-util-list-fields">
+	var deleteKBArticles = A.one('#<portlet:namespace />deleteKBArticles');
+	var kbArticlesAdminSearchContainer = A.one('#<portlet:namespace />kbArticlesAdminSearchContainer');
 	var updateKBArticlesPriorities = A.one('#<portlet:namespace />updateKBArticlesPriorities');
 
 	if (updateKBArticlesPriorities) {
@@ -404,8 +397,6 @@ KBArticleURLHelper kbArticleURLHelper = new KBArticleURLHelper(renderRequest, re
 			}
 		);
 	}
-
-	var deleteKBArticles = A.one('#<portlet:namespace />deleteKBArticles');
 
 	if (deleteKBArticles) {
 		deleteKBArticles.on(
@@ -420,8 +411,6 @@ KBArticleURLHelper kbArticleURLHelper = new KBArticleURLHelper(renderRequest, re
 			}
 		);
 	}
-
-	var kbArticlesAdminSearchContainer = A.one('#<portlet:namespace />kbArticlesAdminSearchContainer');
 
 	kbArticlesAdminSearchContainer.delegate(
 		'click',
@@ -444,7 +433,7 @@ KBArticleURLHelper kbArticleURLHelper = new KBArticleURLHelper(renderRequest, re
 
 			var rowIdsNode = parentTr.one('input[type="checkbox"]');
 
-			rowIdsNode.set('checked', true);
+			rowIdsNode.attr('checked', true);
 
 			document.<portlet:namespace />fm.method = 'post';
 
